@@ -64,7 +64,7 @@ configurations.all {
     resolutionStrategy {
         eachDependency {
             if ((requested.group == "org.jetbrains.kotlin") && (requested.name.startsWith("kotlin-stdlib"))) {
-                useVersion("1.6.0")
+                useVersion("1.9.0")
             }
         }
     }
