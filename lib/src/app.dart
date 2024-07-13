@@ -7,7 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData appTheme = ThemeData(
       useMaterial3: true,
-
+      
       // Paleta de colores principal
       primaryColor: const Color(0xFF8EC90B),
       colorScheme: ColorScheme.fromSeed(

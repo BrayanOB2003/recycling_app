@@ -1,6 +1,6 @@
 # recycling_app
 
-A new Flutter project.
+Reciclying app project
 
 ## Getting Started
 
@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+##Get started
+
+fvm flutter version 3.22.2
+fvm dart version 3.4.3
