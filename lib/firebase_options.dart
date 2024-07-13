@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: String.fromEnvironment('ANDROID_API_KEY'),
-    appId: '1:444908880523:android:eecce1516c8c5cc72a8a8e',
+    appId: String.fromEnvironment('ANDROID_APP_ID'),
     messagingSenderId: '444908880523',
     projectId: 'reciclajeapp-e4599',
     storageBucket: 'reciclajeapp-e4599.appspot.com',
@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: String.fromEnvironment('IOS_API_KEY'),
-    appId: '1:444908880523:ios:37c3dadd86b5aac02a8a8e',
+    appId: String.fromEnvironment('IOS_APP_ID'),
     messagingSenderId: '444908880523',
     projectId: 'reciclajeapp-e4599',
     storageBucket: 'reciclajeapp-e4599.appspot.com',
