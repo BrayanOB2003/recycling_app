@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycling_app/src/screens/auth/auth_manager.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -102,7 +103,7 @@ class App extends StatelessWidget {
       title: 'APPHP',
       theme: appTheme,
       routes: {
-        '/': (context) => const Row(),
+        '/': (context) => const AuthManager(),
       },
     );
   }
