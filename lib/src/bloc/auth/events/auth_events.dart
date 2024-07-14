@@ -1,9 +1,9 @@
+import 'package:recycling_app/src/model/create_user_model.dart';
+
 abstract class AuthEvent {}
 
 class RegisterEvent extends AuthEvent {
-  final String email;
-  final String password;
-  final String address;
-
-  RegisterEvent({required this.email, required this.password, required this.address});
+  final CreateUserModel createUserModel;
+  
+  RegisterEvent({required this.createUserModel});
 }
