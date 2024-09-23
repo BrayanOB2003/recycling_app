@@ -18,12 +18,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 email: newUser.email,
                 password: newUser.password)
             .then(
-          (value) {
-            newUser.id = value.user?.uid;
-            print(newUser.toMap());
-            db.collection('users').add(newUser.toMap()); //Fix bug of add document
-            emit(AuthSuccess());
-          },
+            (value) {
+              newUser.id = value.user?.uid;
+              db.collection('users').doc("${newUser.id}").set(newUser.toMap()).onError((error, stackTrace) {
+                emit(AuthError("Error creating user"));
+              });
+              emit(AuthSuccess());
+            },
         );
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {

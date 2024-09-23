@@ -15,7 +15,6 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("tapped");
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
@@ -38,14 +37,7 @@ class RegisterScreen extends StatelessWidget {
                         const Spacer(),
                         ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              context.read<AuthBloc>().add(RegisterEvent(
-                                  createUserModel: CreateUserModel(
-                                      null,
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                      address: addressController.text)));
-                            }
+                            validateForm()? registerUser(context): null;
                           },
                           child: const Text('Registrarse'),
                         ),
@@ -62,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Correo electronico"),
+        const Text("Correo electronico"),
         TextFormField(
           decoration: const InputDecoration(
             labelText: 'correo@gmail.com',
@@ -73,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Text("Dirección"),
+        const Text("Dirección"),
         TextFormField(
           decoration: const InputDecoration(
             labelText: 'Dirección',
@@ -84,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Text("Contraseña"),
+        const Text("Contraseña"),
         TextFormField(
           obscureText: true,
           decoration: const InputDecoration(
@@ -95,6 +87,21 @@ class RegisterScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  bool validateForm() {
+    return _formKey.currentState!.validate();
+  }
+
+  void registerUser(BuildContext context){
+      final CreateUserModel newUser = CreateUserModel(
+          email: emailController.text,
+          password: passwordController.text,
+          address: addressController.text);
+
+      context.read<AuthBloc>().add(
+        RegisterEvent(
+          createUserModel: newUser));
   }
 
   String? generalValidator(String? value) {
