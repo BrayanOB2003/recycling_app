@@ -13,9 +13,14 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GestureDetector(
+      onTap: () {
+        print("tapped");
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
         body: SafeArea(
-            child: Padding(
+              child: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: Form(
                     key: _formKey,
@@ -45,7 +50,12 @@ class RegisterScreen extends StatelessWidget {
                           child: const Text('Registrarse'),
                         ),
                       ],
-                    )))));
+                    )
+                  )
+                )
+              )
+          ),
+        );
   }
 
   Widget textFields() {
