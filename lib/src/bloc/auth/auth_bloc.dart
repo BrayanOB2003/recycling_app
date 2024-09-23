@@ -20,9 +20,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             .then(
             (value) {
               newUser.id = value.user?.uid;
-              db.collection('users').doc("${newUser.id}").set(newUser.toMap()).onError((error, stackTrace) {
-                emit(AuthError("Error creating user"));
-              });
+              db.collection('users')
+                .doc("${newUser.id}")
+                .set(newUser.toMap())
+                .onError((error, stackTrace) {
+                  emit(AuthError("Error creating user"));
+                });
               emit(AuthSuccess());
             },
         );

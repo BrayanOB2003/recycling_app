@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recycling_app/src/bloc/auth/auth_bloc.dart';
 import 'package:recycling_app/src/bloc/auth/events/auth_events.dart';
@@ -20,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
         body: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                padding: const EdgeInsets.fromLTRB(20, 10, 10, 20),
                 child: Form(
                     key: _formKey,
                     child: Column(
@@ -36,6 +37,9 @@ class RegisterScreen extends StatelessWidget {
                         textFields(),
                         const Spacer(),
                         ElevatedButton(
+                          style: ButtonStyle(
+                            minimumSize: WidgetStateProperty.all(const Size(400, 50)),
+                          ),
                           onPressed: () {
                             validateForm()? registerUser(context): null;
                           },
@@ -57,7 +61,9 @@ class RegisterScreen extends StatelessWidget {
         const Text("Correo electronico"),
         TextFormField(
           decoration: const InputDecoration(
+            icon: Icon(Icons.email),
             labelText: 'correo@gmail.com',
+            border: OutlineInputBorder(),
           ),
           controller: emailController,
           validator: emailValidator,
@@ -68,7 +74,9 @@ class RegisterScreen extends StatelessWidget {
         const Text("Dirección"),
         TextFormField(
           decoration: const InputDecoration(
-            labelText: 'Dirección',
+            icon: Icon(Icons.location_on),
+            labelText: 'Cr 5 # 10-20',
+            border: OutlineInputBorder(),
           ),
           controller: addressController,
           validator: generalValidator,
@@ -80,7 +88,9 @@ class RegisterScreen extends StatelessWidget {
         TextFormField(
           obscureText: true,
           decoration: const InputDecoration(
+            icon: Icon(Icons.lock),
             labelText: 'Ejemplo123456',
+            border: OutlineInputBorder(),
           ),
           controller: passwordController,
           validator: generalValidator,
